@@ -15,6 +15,7 @@
 		3A88FFF523D0941E00162279 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3A88FFF323D0941E00162279 /* LaunchScreen.storyboard */; };
 		3AAB41AE23E6EDE0000B1D57 /* CurrentWeather.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3AAB41AD23E6EDE0000B1D57 /* CurrentWeather.swift */; };
 		3AAB41B023E6EED6000B1D57 /* WeatherIconManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3AAB41AF23E6EED6000B1D57 /* WeatherIconManager.swift */; };
+		3AAB41B223E8E083000B1D57 /* APIManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3AAB41B123E8E083000B1D57 /* APIManager.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -28,6 +29,7 @@
 		3A88FFF623D0941E00162279 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		3AAB41AD23E6EDE0000B1D57 /* CurrentWeather.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrentWeather.swift; sourceTree = "<group>"; };
 		3AAB41AF23E6EED6000B1D57 /* WeatherIconManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeatherIconManager.swift; sourceTree = "<group>"; };
+		3AAB41B123E8E083000B1D57 /* APIManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIManager.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -64,6 +66,7 @@
 				3A88FFEA23D0933300162279 /* SceneDelegate.swift */,
 				3A88FFEC23D0933300162279 /* ViewController.swift */,
 				3A88FFEE23D0933300162279 /* Main.storyboard */,
+				3AAB41B123E8E083000B1D57 /* APIManager.swift */,
 				3AAB41AD23E6EDE0000B1D57 /* CurrentWeather.swift */,
 				3AAB41AF23E6EED6000B1D57 /* WeatherIconManager.swift */,
 				3A88FFF123D0941E00162279 /* Assets.xcassets */,
@@ -144,6 +147,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				3AAB41B223E8E083000B1D57 /* APIManager.swift in Sources */,
 				3A88FFED23D0933300162279 /* ViewController.swift in Sources */,
 				3A88FFE923D0933300162279 /* AppDelegate.swift in Sources */,
 				3AAB41B023E6EED6000B1D57 /* WeatherIconManager.swift in Sources */,

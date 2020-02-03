@@ -27,6 +27,20 @@ class ViewController: UIViewController {
         let icon = WeatherIconManager.Rain.image
         let currentWeather = CurrentWeather(temperature: 10, appearentTemperature: 5, humidity: 70, pressuare: 750, icon: icon)
         updateUIWith(currentWeather: currentWeather)
+        
+//         // wrong way
+//
+//        let urlString = "https://api.darksky.net/forecast/9a90f273e38f372d2aa5751d44ef0e06/37.8267,-122.4233"
+//        let baseURL = URL(string: "https://api.darksky.net/forecast/9a90f273e38f372d2aa5751d44ef0e06/")
+//        let fullURL = URL(string: "37.8267,-122.4233", relativeTo: baseURL)
+//
+//        let sessionConfiguration = URLSessionConfiguration.default
+//        let session = URLSession(configuration: sessionConfiguration)
+//        let request = URLRequest(url: fullURL!)
+//        let dataTask = session.dataTask(with: fullURL!) { (data, respose, errror) in
+//
+//        }
+//        dataTask.resume() /
     }
 
     

@@ -20,6 +20,24 @@ enum APIResult<T> {
 }
 
 
+// MARK: protocol JSONDecodable
+
+protocol JSONDecodable {
+    init?(JSON: [String: AnyObject])
+}
+
+
+// MARK: protocol FinalURLPoint
+
+protocol FinalURLPoint {
+    var baseURL: URL { get }
+    var path: String { get }
+    var request: URLRequest { get }
+    
+    
+}
+
+
 // MARK: protocol APIManager
 
 protocol APIManager {
@@ -28,7 +46,7 @@ protocol APIManager {
     var session: URLSession { get }
     
     func JSONTaskWith(request: URLRequest, completionHandler: @escaping JSONCompletionHandler)  -> JSONTask
-    func fetch<T>(request: URLRequest, parse: ([String: AnyObject]) -> T?, completionHandler: (APIResult<T>) -> Void)
+    func fetch<T: JSONDecodable>(request: URLRequest, parse: ([String: AnyObject]) -> T?, completionHandler: (APIResult<T>) -> Void)
     
     init(sessionConfiguration: URLSessionConfiguration)
     
@@ -46,14 +64,9 @@ extension APIManager {
     func JSONTaskWith(request: URLRequest, completionHandler: @escaping JSONCompletionHandler)  -> JSONTask {
     
       let dataTask = session.dataTask(with: request) { (data, response, error) in
-        
         guard let HTTPResponse = response as? HTTPURLResponse else {
-          
-          let userInfo = [
-            NSLocalizedDescriptionKey: NSLocalizedString("Missing HTTP Response", comment: "")
-          ]
+          let userInfo = [ NSLocalizedDescriptionKey: NSLocalizedString("Missing HTTP Response", comment: "")]
           let error = NSError(domain: VGNetworkingErrorDomain, code: 100, userInfo: userInfo)
-          
           completionHandler(nil, nil, error)
           return
         }

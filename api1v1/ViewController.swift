@@ -25,7 +25,7 @@ class ViewController: UIViewController {
         super.viewDidLoad()
         
         let icon = WeatherIconManager.Rain.image
-        let currentWeather = CurrentWeather(temperature: 10, appearentTemperature: 5, humidity: 70, pressuare: 750, icon: icon)
+        let currentWeather = CurrentWeather(temperature: 10, apparentTemperature: 5, humidity: 70, pressure: 750, icon: icon)
         updateUIWith(currentWeather: currentWeather)
         
 //         // wrong way
@@ -55,7 +55,7 @@ class ViewController: UIViewController {
     func updateUIWith(currentWeather: CurrentWeather) {
         
         self.imageView.image = currentWeather.icon
-        self.pressuareLabel.text = currentWeather.pressuareString
+        self.pressuareLabel.text = currentWeather.pressureString
         self.temperatureLabel.text = currentWeather.temperatureString
         self.appearentTemperatureLabel.text = currentWeather.appearentTemperatureString
         self.humidityLabel.text = currentWeather.humidityString

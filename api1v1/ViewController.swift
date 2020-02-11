@@ -20,27 +20,28 @@ class ViewController: UIViewController {
     @IBOutlet weak var appearentTemperatureLabel: UILabel!
     @IBOutlet weak var refreshButton: UIButton!
     
+    lazy var weatherManager = APIWeatherManager(apiKey: "9a90f273e38f372d2aa5751d44ef0e06")
+    let coordinates = Coordinates(latitude: 55.678728, longitude: 37.670680)
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        let icon = WeatherIconManager.Rain.image
-        let currentWeather = CurrentWeather(temperature: 10, apparentTemperature: 5, humidity: 70, pressure: 750, icon: icon)
-        updateUIWith(currentWeather: currentWeather)
+        weatherManager.fetchCurrentWeatherWith(coordinates: coordinates) { (result) in
+            switch result {
+            case .Success(let currentWeather):
+                self.updateUIWith(currentWeather: currentWeather)
+            case .Failure(let error as NSError):
+                let alertController = UIAlertController(title: "Unable to get data", message: "\(error.localizedDescription)", preferredStyle: .alert)
+                let okAction = UIAlertAction(title: "Okey", style: .default, handler: nil)
+                alertController.addAction(okAction)
+                self.present(alertController, animated: true, completion: nil)
+            default: break
+            }
+        }
         
-//         // wrong way
-//
-//        let urlString = "https://api.darksky.net/forecast/9a90f273e38f372d2aa5751d44ef0e06/37.8267,-122.4233"
-//        let baseURL = URL(string: "https://api.darksky.net/forecast/9a90f273e38f372d2aa5751d44ef0e06/")
-//        let fullURL = URL(string: "37.8267,-122.4233", relativeTo: baseURL)
-//
-//        let sessionConfiguration = URLSessionConfiguration.default
-//        let session = URLSession(configuration: sessionConfiguration)
-//        let request = URLRequest(url: fullURL!)
-//        let dataTask = session.dataTask(with: fullURL!) { (data, respose, errror) in
-//
-//        }
-//        dataTask.resume() /
+        
+        
+
     }
 
     

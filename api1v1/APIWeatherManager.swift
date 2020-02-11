@@ -15,7 +15,7 @@ struct Coordinates {
 
 enum ForecastType: FinalURLPoint {
     var baseURL: URL {
-        return URL(string: "https://api.forecast.io")!
+        return URL(string: "https://api.darksky.net")!
     }
     var path: String {
         switch self {
@@ -34,17 +34,6 @@ enum ForecastType: FinalURLPoint {
 
 final class APIWeatherManager: APIManager {
     
-    init(sessionConfiguration: URLSessionConfiguration) {
-        <#code#>
-    }
-    
-    func fetch<T>(request: URLRequest, parse: ([String : AnyObject]) -> T?, completionHandler: (APIResult<T>) -> Void) where T : JSONDecodable {
-        <#code#>
-    }
-    
-    
-    
-
     let apiKey: String
     let sessionConfiguration: URLSessionConfiguration
     lazy var session: URLSession = {
@@ -56,10 +45,11 @@ final class APIWeatherManager: APIManager {
     self.apiKey = apiKey
     }
     
-    // 
+    // our api key init 
     convenience init(apiKey: String) {
         self.init(sessionConfiguration: URLSessionConfiguration.default, apiKey: apiKey)
     }
+    
 
     func fetchCurrentWeatherWith(coordinates: Coordinates, completionHandler: @escaping (APIResult<CurrentWeather>) -> Void ) {
         let request = ForecastType.Current(apiKey: self.apiKey, coordinates: coordinates).request
